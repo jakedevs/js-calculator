@@ -19,5 +19,18 @@ function divide() {
 }
 
 function operate(num1, num2) {
-    
+    switch (operator) {
+        case '+':
+            add()
+            break;
+        case '-':
+            subtract()
+            break;
+        case '*':
+            multiply()
+            break;
+        case '/':
+            divide()
+            break;
+    }
 }
