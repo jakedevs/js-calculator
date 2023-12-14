@@ -64,17 +64,13 @@ digit.forEach((selectednumber) => {
     if (num1 == undefined) {
       num1 = selectednumber.textContent;
       displaynum1.textContent = selectednumber.textContent;
-
-    } 
-    else if (operator == undefined ) {
+    } else if (operator == undefined) {
       num1 += selectednumber.textContent;
       displaynum1.textContent = num1;
-    }
-    else if (num2 == undefined) {
+    } else if (num2 == undefined) {
       num2 = selectednumber.textContent;
       displaynum2.textContent = selectednumber.textContent;
-    }
-    else if (num2 != undefined) {
+    } else if (num2 != undefined) {
       num2 += selectednumber.textContent;
       displaynum2.textContent = num2;
     }
