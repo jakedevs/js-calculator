@@ -55,16 +55,20 @@ operators.forEach((currentop) => {
       displayoperator.textContent = currentop.textContent;
     } else {
       let previousValue = operate();
+      console.log(previousValue);
+      num2 = undefined;
       clearport();
       num1 = previousValue;
-      displaynum1.textContent = previousValue;
+      console.log(previousValue);
+      displayresult.textContent = previousValue;
+      operator = currentop.textContent;
+      displayoperator.textContent = currentop.textContent;
     }
   });
 });
 
 digit.forEach((selectednumber) => {
   selectednumber.addEventListener("click", () => {
-    console.log(selectednumber.textContent);
     if (num1 == undefined) {
       num1 = selectednumber.textContent;
       displaynum1.textContent = selectednumber.textContent;
