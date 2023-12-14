@@ -18,9 +18,30 @@ displayresult.textContent = result;
 let digit = document.querySelectorAll("#digit");
 
 let operators = document.querySelectorAll("#operator");
+
+let viewport = document.querySelector("#viewport");
+
+let displayequals = document.createElement("span");
+
 let equal = document.querySelector("#equals");
 
+let clear = document.querySelector("#clear");
+
+clear.addEventListener("click", () => {
+  num1 = undefined;
+  num2 = undefined;
+  operator = undefined;
+  result = undefined;
+  displaynum1.textContent = num1;
+  displaynum2.textContent = num2;
+  displayoperator.textContent = operator;
+  displayresult.textContent = result;
+  displayequals.textContent = undefined;
+});
+
 equal.addEventListener("click", () => {
+  displayequals.textContent = " =";
+  viewport.insertBefore(displayequals, displaynum2.nextSibling);
   displayresult.textContent = operate();
   console.log(operate());
   console.log(displayresult.textContent);
@@ -28,9 +49,12 @@ equal.addEventListener("click", () => {
 
 operators.forEach((currentop) => {
   currentop.addEventListener("click", () => {
-    console.log(currentop.textContent);
-    operator = currentop.textContent;
-    displayoperator.textContent = currentop.textContent;
+    if (operator == undefined) {
+      console.log(currentop.textContent);
+      operator = currentop.textContent;
+      displayoperator.textContent = currentop.textContent;
+    } else {
+    }
   });
 });
 
@@ -40,9 +64,19 @@ digit.forEach((selectednumber) => {
     if (num1 == undefined) {
       num1 = selectednumber.textContent;
       displaynum1.textContent = selectednumber.textContent;
-    } else {
+
+    } 
+    else if (operator == undefined ) {
+      num1 += selectednumber.textContent;
+      displaynum1.textContent = num1;
+    }
+    else if (num2 == undefined) {
       num2 = selectednumber.textContent;
       displaynum2.textContent = selectednumber.textContent;
+    }
+    else if (num2 != undefined) {
+      num2 += selectednumber.textContent;
+      displaynum2.textContent = num2;
     }
   });
 });
