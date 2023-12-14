@@ -27,7 +27,7 @@ let equal = document.querySelector("#equals");
 
 let clear = document.querySelector("#clear");
 
-clear.addEventListener("click", () => {
+function clearport() {
   num1 = undefined;
   num2 = undefined;
   operator = undefined;
@@ -37,23 +37,27 @@ clear.addEventListener("click", () => {
   displayoperator.textContent = operator;
   displayresult.textContent = result;
   displayequals.textContent = undefined;
-});
+}
+
+clear.addEventListener("click", clearport);
 
 equal.addEventListener("click", () => {
   displayequals.textContent = " =";
   viewport.insertBefore(displayequals, displaynum2.nextSibling);
   displayresult.textContent = operate();
-  console.log(operate());
-  console.log(displayresult.textContent);
+  num1 = operate();
 });
 
 operators.forEach((currentop) => {
   currentop.addEventListener("click", () => {
     if (operator == undefined) {
-      console.log(currentop.textContent);
       operator = currentop.textContent;
       displayoperator.textContent = currentop.textContent;
     } else {
+      let previousValue = operate();
+      clearport();
+      num1 = previousValue;
+      displaynum1.textContent = previousValue;
     }
   });
 });
