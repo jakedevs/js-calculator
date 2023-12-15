@@ -1,89 +1,9 @@
-let num1 = undefined;
-let operator = undefined;
-let num2 = undefined;
+//let num1 = prompt("num1");
+//let operator = prompt("operator");
+//let num2 = prompt("num2");
 let result = undefined;
 
-let displaynum1 = document.querySelector("#displaynum1");
-displaynum1.textContent = num1;
-
-let displayoperator = document.querySelector("#displayoperator");
-displayoperator.textContent = operator;
-
-let displaynum2 = document.querySelector("#displaynum2");
-displaynum2.textContent = num2;
-
-let displayresult = document.querySelector("#displayresult");
-displayresult.textContent = result;
-
-let digit = document.querySelectorAll("#digit");
-
-let operators = document.querySelectorAll("#operator");
-
-let viewport = document.querySelector("#viewport");
-
-let displayequals = document.createElement("span");
-
-let equal = document.querySelector("#equals");
-
-let clear = document.querySelector("#clear");
-
-function clearport() {
-  num1 = undefined;
-  num2 = undefined;
-  operator = undefined;
-  result = undefined;
-  displaynum1.textContent = num1;
-  displaynum2.textContent = num2;
-  displayoperator.textContent = operator;
-  displayresult.textContent = result;
-  displayequals.textContent = undefined;
-}
-
-clear.addEventListener("click", clearport);
-
-equal.addEventListener("click", () => {
-  displayequals.textContent = " =";
-  viewport.insertBefore(displayequals, displaynum2.nextSibling);
-  displayresult.textContent = operate();
-  num1 = operate();
-});
-
-operators.forEach((currentop) => {
-  currentop.addEventListener("click", () => {
-    if (operator == undefined) {
-      operator = currentop.textContent;
-      displayoperator.textContent = currentop.textContent;
-    } else {
-      let previousValue = operate();
-      console.log(previousValue);
-      num2 = undefined;
-      clearport();
-      num1 = previousValue;
-      console.log(previousValue);
-      displayresult.textContent = previousValue;
-      operator = currentop.textContent;
-      displayoperator.textContent = currentop.textContent;
-    }
-  });
-});
-
-digit.forEach((selectednumber) => {
-  selectednumber.addEventListener("click", () => {
-    if (num1 == undefined) {
-      num1 = selectednumber.textContent;
-      displaynum1.textContent = selectednumber.textContent;
-    } else if (operator == undefined) {
-      num1 += selectednumber.textContent;
-      displaynum1.textContent = num1;
-    } else if (num2 == undefined) {
-      num2 = selectednumber.textContent;
-      displaynum2.textContent = selectednumber.textContent;
-    } else if (num2 != undefined) {
-      num2 += selectednumber.textContent;
-      displaynum2.textContent = num2;
-    }
-  });
-});
+operate();
 
 function add() {
   return parseInt(num1) + parseInt(num2);
@@ -104,16 +24,50 @@ function divide() {
 function operate() {
   switch (operator) {
     case "+":
+      console.log(add());
       return add();
       break;
     case "-":
+      console.log(subtract());
       return subtract();
       break;
     case "*":
+      console.log(multiply());
       return multiply();
       break;
     case "/":
+      console.log(divide());
       return divide();
       break;
   }
 }
+
+let display1 = document.querySelector("#displaynum1");
+let displayop = document.querySelector("#displayoperator");
+let display2 = document.querySelector("#displaynum2");
+let displayresult = document.querySelector("#displayresult");
+
+let numberButtons = document.querySelectorAll("#digit");
+
+numberButtons.forEach((number) => {
+  number.addEventListener("click", () => {
+    if (displayop.textContent == "") {
+      display1.textContent += number.textContent;
+    } else {
+      display2.textContent += number.textContent;
+    }
+  });
+});
+
+let operatorButtons = document.querySelectorAll("#operator");
+
+operatorButtons.forEach((operator) => {
+  operator.addEventListener("click", () => {
+    if (display2.textContent == "") {
+      displayop.textContent = operator.textContent;
+    }
+    else {
+      displayresult.textContent = parseInt(display1.textContent) + parseInt(display2.textContent);
+    }
+  });
+});
