@@ -76,6 +76,7 @@ function clear() {
   operator.textContent = "";
   num1.textContent = "";
   num2.textContent = "";
+  previousOperator = "";
 }
 
 clearButton.addEventListener("click", clear);
