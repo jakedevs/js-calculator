@@ -1,7 +1,6 @@
 //let num1 = prompt("num1");
 //let operator = prompt("operator");
 //let num2 = prompt("num2");
-let result = undefined;
 
 operate();
 
@@ -45,7 +44,6 @@ function operate() {
 let display1 = document.querySelector("#displaynum1");
 let displayop = document.querySelector("#displayoperator");
 let display2 = document.querySelector("#displaynum2");
-let displayresult = document.querySelector("#displayresult");
 
 let numberButtons = document.querySelectorAll("#digit");
 
@@ -65,9 +63,16 @@ operatorButtons.forEach((operator) => {
   operator.addEventListener("click", () => {
     if (display2.textContent == "") {
       displayop.textContent = operator.textContent;
-    }
-    else {
-      displayresult.textContent = parseInt(display1.textContent) + parseInt(display2.textContent);
+    } else {
+      console.log("add logic here");
     }
   });
+});
+
+let clearButton = document.querySelector("#clear");
+
+clearButton.addEventListener("click", () => {
+  displayop.textContent = "";
+  display2.textContent = "";
+  display1.textContent = "";
 });
