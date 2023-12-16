@@ -87,3 +87,15 @@ evaluate.addEventListener("click", () => {
   clear();
   num1.textContent = result;
 });
+
+let btn = document.querySelectorAll("button");
+
+btn.forEach((button) => {
+  button.addEventListener("mouseover", () => {
+    button.style.backgroundColor = "gray";
+  });
+
+  button.addEventListener('mouseout', () => {
+    button.style.backgroundColor = "slategray";
+  })
+});
