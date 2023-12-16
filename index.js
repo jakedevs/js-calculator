@@ -1,6 +1,4 @@
 function add() {
-  console.log(parseInt(num1.textContent) + parseInt(num2.textContent));
-
   return parseInt(num1.textContent) + parseInt(num2.textContent);
 }
 
@@ -23,19 +21,15 @@ function divide() {
 function operate(op) {
   switch (op) {
     case "+":
-      console.log(add());
       return add();
       break;
     case "-":
-      console.log(subtract());
       return subtract();
       break;
     case "*":
-      console.log(multiply());
       return multiply();
       break;
     case "/":
-      console.log(divide());
       return divide();
       break;
   }
