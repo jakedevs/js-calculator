@@ -73,6 +73,9 @@ body {
 
 #clear {
   border-bottom-right-radius: 7px;
+  background-color: slategray;
+  border: 1px solid whitesmoke;
+  box-sizing: border-box;
 }
 
 span {
