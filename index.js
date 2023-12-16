@@ -1,4 +1,6 @@
 function add() {
+  console.log(parseInt(num1.textContent) + parseInt(num2.textContent));
+
   return parseInt(num1.textContent) + parseInt(num2.textContent);
 }
 
@@ -38,6 +40,7 @@ function operate(op) {
 let num1 = document.querySelector("#num1");
 let operator = document.querySelector("#operator");
 let num2 = document.querySelector("#num2");
+let evaluate = document.querySelector("#evaluate");
 
 let numberButtons = document.querySelectorAll("#digit");
 
@@ -80,3 +83,9 @@ function clear() {
 }
 
 clearButton.addEventListener("click", clear);
+
+evaluate.addEventListener("click", () => {
+  let result = operate(operator.textContent);
+  clear();
+  num1.textContent = result;
+});
