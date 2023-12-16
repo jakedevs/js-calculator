@@ -1,0 +1,15 @@
+html, body {
+  height: 100%;
+}
+
+
+#calculator {
+  display: grid;
+  justify-items: center;
+}
+
+#buttongrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
