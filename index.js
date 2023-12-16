@@ -1,25 +1,21 @@
-let num1 = "";
-let operator = "";
-let num2 = "";
-
 function add() {
-  return parseInt(num1) + parseInt(num2);
+  return parseInt(num1.textContent) + parseInt(num2.textContent);
 }
 
 function subtract() {
-  return parseInt(num1) - parseInt(num2);
+  return parseInt(num1.textContent) - parseInt(num2.textContent);
 }
 
 function multiply() {
-  return parseInt(num1) * parseInt(num2);
+  return parseInt(num1.textContent) * parseInt(num2.textContent);
 }
 
 function divide() {
-  return parseInt(num1) / parseInt(num2);
+  return parseInt(num1.textContent) / parseInt(num2.textContent);
 }
 
-function operate() {
-  switch (operator) {
+function operate(op) {
+  switch (op) {
     case "+":
       console.log(add());
       return add();
@@ -39,41 +35,47 @@ function operate() {
   }
 }
 
-let display1 = document.querySelector("#displaynum1");
-let displayop = document.querySelector("#displayoperator");
-let display2 = document.querySelector("#displaynum2");
+let num1 = document.querySelector("#num1");
+let operator = document.querySelector("#operator");
+let num2 = document.querySelector("#num2");
 
 let numberButtons = document.querySelectorAll("#digit");
 
 numberButtons.forEach((number) => {
   number.addEventListener("click", () => {
-    if (displayop.textContent == "") {
-      display1.textContent += number.textContent;
+    if (operator.textContent == "") {
+      num1.textContent += number.textContent;
     } else {
-      display2.textContent += number.textContent;
+      num2.textContent += number.textContent;
     }
   });
 });
 
 let operatorButtons = document.querySelectorAll("#operator");
 
-operatorButtons.forEach((operator) => {
-  operator.addEventListener("click", () => {
-    if (display2.textContent == "") {
-      displayop.textContent = operator.textContent;
-      operator = displayop.textContent;
-      console.log(operator);
+let previousOperator = "";
+
+operatorButtons.forEach((currentOperator) => {
+  currentOperator.addEventListener("click", () => {
+    if (num2.textContent == "") {
+      operator.textContent = currentOperator.textContent;
+      previousOperator = currentOperator.textContent;
     } else {
-      display1.textContent = num1;
+      let result = operate(previousOperator);
+      clear();
+      num1.textContent = result;
+      operator.textContent = currentOperator.textContent;
+      previousOperator = currentOperator.textContent;
     }
   });
 });
 
 let clearButton = document.querySelector("#clear");
 
-clearButton.addEventListener("click", () => {
-  operator = "";
-  displayop.textContent = "";
-  display2.textContent = "";
-  display1.textContent = "";
-});
+function clear() {
+  operator.textContent = "";
+  num1.textContent = "";
+  num2.textContent = "";
+}
+
+clearButton.addEventListener("click", clear);
