@@ -1,8 +1,6 @@
-//let num1 = prompt("num1");
-//let operator = prompt("operator");
-//let num2 = prompt("num2");
-
-operate();
+let num1 = "";
+let operator = "";
+let num2 = "";
 
 function add() {
   return parseInt(num1) + parseInt(num2);
@@ -63,8 +61,10 @@ operatorButtons.forEach((operator) => {
   operator.addEventListener("click", () => {
     if (display2.textContent == "") {
       displayop.textContent = operator.textContent;
+      operator = displayop.textContent;
+      console.log(operator);
     } else {
-      console.log("add logic here");
+      display1.textContent = num1;
     }
   });
 });
@@ -72,6 +72,7 @@ operatorButtons.forEach((operator) => {
 let clearButton = document.querySelector("#clear");
 
 clearButton.addEventListener("click", () => {
+  operator = "";
   displayop.textContent = "";
   display2.textContent = "";
   display1.textContent = "";
