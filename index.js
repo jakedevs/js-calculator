@@ -52,7 +52,7 @@ numberButtons.forEach((number) => {
   });
 });
 
-let operatorButtons = document.querySelectorAll("#operator");
+let operatorButtons = document.querySelectorAll("#operatorButton");
 
 let previousOperator = "";
 
