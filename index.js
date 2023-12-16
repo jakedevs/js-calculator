@@ -13,7 +13,11 @@ function multiply() {
 }
 
 function divide() {
-  return parseInt(num1.textContent) / parseInt(num2.textContent);
+  if (num1.textContent == 0 || num2.textContent == 0) {
+    return parseInt(num1.textContent);
+  } else {
+    return parseInt(num1.textContent) / parseInt(num2.textContent);
+  }
 }
 
 function operate(op) {
